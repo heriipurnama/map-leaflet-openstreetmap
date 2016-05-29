@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<!-- Set the title of the application that will be displayed on the browser window -->
+		<title>coba-coba</title>
+			<!-- Specifiy to load the correct remote stylesheet for Leaflet depending on the browser -->
+<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.5.1/leaflet.css" />
+<!--[if lte IE 8]>
+	<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.5.1/lealet.ie.css" />
+<![endif]-->
+<!-- Load in the remote JS for JQuery -->
+	<script src="http://code.jquery.com/jquery-2.0.0.min.js"></script>
+<!-- Load in the remote JS for Leaflet -->
+	<script src="http://cdn.leafletjs.com/leaflet-0.5.1/leaflet.js"></script>
+<!-- Specify that we will be using the OSWALD font provided by Google
+-->
+	<link href='http://fonts.googleapis.com/css?family=oswald' rel='stylesheet' type='text/css'>
+<!-- Set the initial parameters for the viewport-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<!-- Create custom CSS styles for our display-->
+<style type="text/css">
+	body {
+	padding: 0;
+	margin: 0;
+	}
+	html,body,#map {
+	height: 100%;
+	font-family: 'oswald';
+	}
+	.leaflet-container .leaflet-control-zoom {
+	margin-left: 13px;
+	margin-top: 70px;	
+	}
+	#map {
+	z-index: 1;
+	}
+	#title {
+	z-index: 2;
+	position: absolute;
+	left: 10px;	
+	}
+</style>
+</head>
+	<body>
+		<h1 id="title">coba-coba</h1>
+			<div id="map"></div>
+	<script>
+	Number.prototype.toCurrencyString = function() { return "$"+ Math.floor(this).toLocaleString() + (this % 1).toFixed(2).
+	toLocaleString().replace(/^0/,''); }
+	center = new L.LatLng(39.82, -98.57);
+	zoom = 5;
+	var map = L.map('map').setView(center, zoom);
+	var markerLayerGroup = L.layerGroup().addTo(map);
+	L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+	maxZoom: 18,
+	attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>'
+	}).addTo(map);
+	</script>
+</body>
+</html>
